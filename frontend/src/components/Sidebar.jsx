@@ -26,7 +26,7 @@ export default function Sidebar() {
         </div>
       </div>
 
-      {/* Navigation */}
+  
       <nav className="flex-1 mt-4">
         {menu.map((item) => (
           <NavLink
