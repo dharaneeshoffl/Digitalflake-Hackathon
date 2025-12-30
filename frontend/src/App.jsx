@@ -8,32 +8,22 @@ import Product from "./pages/Product";
 import ProtectedRoute from "./routes/ProtectedRoute";
 
 export default function App() {
-  const isAuth = !!localStorage.getItem("token");
-
   return (
     <Routes>
-      
-      <Route
-        path="/"
-        element={<Navigate to={isAuth ? "/dashboard" : "/login"} />}  />
+   
+      <Route path="/" element={<Navigate to="/signup" replace />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/login" element={<Login />} />
 
-      
-      <Route
-        path="/login"
-        element={isAuth ? <Navigate to="/dashboard" /> : <Login />} />
-
-      <Route
-        path="/signup"
-        element={isAuth ? <Navigate to="/dashboard" /> : <Signup />} />
-
-    
+     
       <Route
         path="/dashboard"
         element={
           <ProtectedRoute>
             <Dashboard />
           </ProtectedRoute>
-        } />
+        }
+      />
 
       <Route
         path="/category"
@@ -62,8 +52,8 @@ export default function App() {
         }
       />
 
-    
-      <Route path="*" element={<Navigate to="/" />} />
+     
+      <Route path="*" element={<Navigate to="/signup" replace />} />
     </Routes>
   );
 }
